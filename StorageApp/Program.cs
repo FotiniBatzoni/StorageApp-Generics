@@ -12,13 +12,13 @@ namespace StorageApp
     {
         static void Main(string[] args)
         {
-            var employeeRepository = new GenericRepository<Employee>();
+            var employeeRepository = new GenericRepositoryWithRemove<Employee>();
             employeeRepository.Add(new Employee { FirstName = "Julia" });
             employeeRepository.Add(new Employee { FirstName = "Anna" });
             employeeRepository.Add(new Employee { FirstName = "Tomas" });
             employeeRepository.Save();
 
-            var organizationRepository = new GenericRepository<Organization>();
+            var organizationRepository = new GenericRepositoryWithRemove<Organization>();
             organizationRepository.Add(new Organization { Name = "PluralSight" });
             organizationRepository.Add(new Organization { Name = "Globomatics" });
             organizationRepository.Save();
