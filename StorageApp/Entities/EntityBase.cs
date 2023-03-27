@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace StorageApp.Entities
 {
-    public class EntityBase
+    public class EntityBase : IEntity
     {
         public int Id { get; set; }
     }
