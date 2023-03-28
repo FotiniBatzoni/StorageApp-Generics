@@ -17,8 +17,8 @@ namespace StorageApp.Repositories
         T GetById(int id);
     }
 
-    public interface IRepository<T> : IReadRepository<T> , IWriteRepository<T> where T : IEntity
+    public interface IRepository<T> : IReadRepository<T> , IWriteRepository<T> 
+        where T : IEntity
     {
-
     }
 }
