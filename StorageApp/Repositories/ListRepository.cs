@@ -7,10 +7,15 @@ using System.Linq;
 
 namespace StorageApp.Repositories
 {
-    public class ListRepository<T> : IRepository<T> where T : class, IEntity
+    public class ListRepository<T> : IRepository<T> where T :  IEntity
     { 
 
         private readonly List<T> _items = new List<T>();
+
+        public IEnumerable<T> GetAll()
+        {
+           return _items.ToList();
+        }
 
         public T GetById(int id)
         {
@@ -36,5 +41,7 @@ namespace StorageApp.Repositories
                 Console.WriteLine(item);
             }
         }
+
+
     }
 }
