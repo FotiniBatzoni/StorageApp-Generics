@@ -25,7 +25,7 @@ namespace StorageApp
             Console.ReadLine();
         }
 
-        private static void WriteAllToConsole(IRepository<IEntity> repository)
+        private static void WriteAllToConsole(IReadRepository<IEntity> repository)
         {
             var items = repository.GetAll();
             foreach (var item in items)

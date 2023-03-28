@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace StorageApp.Repositories
 {
-    public interface IReadRepository<T>
+    public interface IReadRepository<out T>
     {
         IEnumerable<T> GetAll();
         T GetById(int id);
