@@ -2,10 +2,7 @@
 using StorageApp.Entities;
 using StorageApp.Repositories;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace StorageApp
 {
@@ -15,6 +12,9 @@ namespace StorageApp
         {
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
+
+            AddManagers(employeeRepository);
+
             GetEmployeeById(employeeRepository);
             WriteAllToConsole(employeeRepository);
 
@@ -23,6 +23,14 @@ namespace StorageApp
             WriteAllToConsole(organizationRepository);
 
             Console.ReadLine();
+        }
+
+        private static void AddManagers(IWriteRepository<Manager> managerRepository)
+        {
+
+            managerRepository.Add(new Manager { FirstName = "Sara" });
+            managerRepository.Add(new Manager { FirstName = "Henry" });
+            managerRepository.Save();
         }
 
         private static void WriteAllToConsole(IReadRepository<IEntity> repository)
