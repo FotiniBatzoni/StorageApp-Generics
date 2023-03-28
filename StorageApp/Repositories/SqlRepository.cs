@@ -2,13 +2,11 @@
 
 using Microsoft.EntityFrameworkCore;
 using StorageApp.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+
 
 namespace StorageApp.Repositories
 {
-    public class SqlRepository<T> where T : class, IEntity
+    public class SqlRepository<T> : IRepository<T> where T : class, IEntity
     {
         private readonly DbContext _dbContext;
 

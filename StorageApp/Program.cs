@@ -1,4 +1,5 @@
-﻿using StorageApp.Entities;
+﻿using StorageApp.Data;
+using StorageApp.Entities;
 using StorageApp.Repositories;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ namespace StorageApp
     {
         static void Main(string[] args)
         {
-            var employeeRepository = new ListRepository<Employee>();
+            var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext());
             AddEmployees(employeeRepository);
             GetEmployeeById(employeeRepository);
 
