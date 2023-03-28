@@ -1,5 +1,6 @@
 ﻿
 
+using Microsoft.EntityFrameworkCore;
 using StorageApp.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,32 +10,35 @@ namespace StorageApp.Repositories
 {
     public class SqlRepository<T> where T : class, IEntity
     {
+        private readonly DbContext _dbContext;
 
-        private readonly List<T> _items = new List<T>();
+        private readonly DbSet<T> _dbSet;
+
+        public SqlRepository(DbContext dbContext)
+        {
+            _dbContext = dbContext;
+            _dbSet = _dbContext.Set<T>();
+        }
 
         public T GetById(int id)
         {
-            return _items.Single(item => item.Id == id);
+            return _dbSet.Find(id);
         }
 
 
         public void Add(T item)
         {
-            item.Id = _items.Count + 1;
-            _items.Add(item);
+            _dbSet.Add(item);
         }
 
         public void Remove(T item)
         {
-            _items.Remove(item);
+            _dbSet.Remove(item);
         }
 
         public void Save()
         {
-            foreach (var item in _items)
-            {
-                Console.WriteLine(item);
-            }
+            _dbContext.SaveChanges();
         }
     }
 }
