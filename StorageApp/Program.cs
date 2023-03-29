@@ -12,7 +12,7 @@ namespace StorageApp
         {
             //var itemAdded = new ItemAdded<Employee>(EmployeeAdded);
             //or
-            ItemAdded<Employee> itemAdded = EmployeeAdded;
+            //ItemAdded<Employee> itemAdded = EmployeeAdded;
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(),
                 EmployeeAdded);
             
