@@ -56,7 +56,7 @@ namespace StorageApp
                 new Employee { FirstName = "Anna" },
                 new Employee { FirstName = "Tomas" }
             };
-            AddBatch(employeeRepository, employees);
+            employeeRepository.AddBatch( employees);
         }
 
         private static void AddOrganazations(IRepository<Organization> organizationRepository)
@@ -66,17 +66,9 @@ namespace StorageApp
                 new Organization { Name = "PluralSight" },
                 new Organization { Name = "Globomatics" }
             };
-            AddBatch(organizationRepository, organazations);
+            organizationRepository.AddBatch(organazations);
 
         }
 
-        private static void AddBatch<T>(IWriteRepository<T> repository, T[] items)
-        {
-            foreach (var item in items)
-            {
-                repository.Add(item);
-            }
-            repository.Save();
-        }
     }
 }
