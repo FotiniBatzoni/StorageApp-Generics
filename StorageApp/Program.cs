@@ -58,8 +58,21 @@ namespace StorageApp
 
         private static void AddOrganazations(IRepository<Organization> organizationRepository)
         {
-            organizationRepository.Add(new Organization { Name = "PluralSight" });
-            organizationRepository.Add(new Organization { Name = "Globomatics" });
+            var organazations = new[]
+            {
+                new Organization { Name = "PluralSight" },
+                new Organization { Name = "Globomatics" }
+            };
+            AddBatch(organizationRepository, organazations);
+
+        }
+
+        private static void AddBatch(IRepository<Organization> organizationRepository, Organization[] organazations)
+        {
+            foreach (var item in organazations)
+            {
+                organizationRepository.Add(item);
+            }
             organizationRepository.Save();
         }
     }
