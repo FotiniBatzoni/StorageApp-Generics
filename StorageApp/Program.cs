@@ -10,9 +10,13 @@ namespace StorageApp
     {
         static void Main(string[] args)
         {
-            var itemAdded = new ItemAdded<Employee>(EmployeeAdded);
+            //var itemAdded = new ItemAdded<Employee>(EmployeeAdded);
+            //or
+            ItemAdded<Employee> itemAdded = EmployeeAdded;
             var employeeRepository = new SqlRepository<Employee>(new StorageAppDbContext(),
-                itemAdded);
+                EmployeeAdded);
+            
+
             AddEmployees(employeeRepository);
 
             AddManagers(employeeRepository);
